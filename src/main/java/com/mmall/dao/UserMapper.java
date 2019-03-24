@@ -1,6 +1,9 @@
 package com.mmall.dao;
 
 import com.mmall.pojo.User;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,12 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    int checkUser(String userid);
+
+    int checkEmail(String email);
+
+    User userLogin(@Param("userid") String userid,@Param("psw") String psw);
+
+    List<User> getAllUser();
 }

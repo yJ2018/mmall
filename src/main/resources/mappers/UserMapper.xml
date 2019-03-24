@@ -151,4 +151,23 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="checkUser" resultType="int" parameterType="string">
+    select count(1) from mmall_user
+    where username = #{userid}
+  </select>
+
+  <select id="checkEmail" resultType="int" parameterType="string">
+    select count(1) from mmall_user
+    where username = #{email}
+  </select>
+
+  <select id="userLogin" resultMap="BaseResultMap" parameterType="map">
+    select <include refid="Base_Column_List"></include> from mmall_user
+    where username = #{userid} and password = #{psw}
+  </select>
+
+  <select id="getAllUser" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from mmall_user
+  </select>
+
 </mapper>
